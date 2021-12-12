@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'to_do_App/skeleton.html'%}
+{% load static %}
+
+{% block title%}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<title>Home</title>
+{% endblock %}
+
+{% block content%}
+<div class="main">
+    <div class="taglines">
+        <h1>Manage your tasks </br> online  with us</h1>
+    </div>
+    <div class="to_do_image">
+        <img src="{% static 'images/to_do_image.png'%}" alt="">
+    </div>
+</div>
+<div class="main">
+    <a href="/signup"> Sign up </a>
+    <a href="accounts/login"> Login </a>
+</div>
+
+{% endblock %}

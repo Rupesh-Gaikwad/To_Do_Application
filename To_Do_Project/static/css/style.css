@@ -1,0 +1,33 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.nav_bar {
+    background-color: rgb(129, 28, 129);
+    margin-top: 0px;
+    padding: 10px 0px;
+    text-align: center;
+    color: wheat;
+    height: 50px;
+    border-bottom: 5px solid rgb(90, 10, 90);
+    border-top: 5px solid rgb(90, 10, 90);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_bar h1{
+    height: 38px;
+}
+
+.nav_bar img{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+

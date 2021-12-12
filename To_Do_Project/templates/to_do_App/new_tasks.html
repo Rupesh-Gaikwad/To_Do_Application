@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'to_do_App/tasks_template.html' %}
+
+{% block main %}
+<div class="main">
+    <div class="side_panel">
+        <ul>
+            <a href="/ongoing_tasks"><li >Ongoing Tasks</li></a>
+            <a href="/upcoming_tasks"><li >Upcoming Tasks</li></a>
+            <a href="/completed_tasks"><li >Completed Tasks</li></a>
+            <a href="/tasks_history"><li >Tasks History</li></a>
+            <a href="/new_task"><li id ="current">Add New Task</li></a>
+        </ul>
+    </div>
+    <div class="main_content">
+        <h2>Add New tasks Below</h2>
+        <form method="POST">
+            
+            <form method="POST">
+                <p> <input type="text" name="title" placeholder="Task Title" maxlength="60" required="" id="id_title"></p>
+                <p> <textarea name="description" cols="40" rows="5" placeholder="Task Description" maxlength="500" required="" id="id_description"></textarea></p>
+                <p>
+                    <label for="id_task_starts_at">Task starts at:</label>
+                    <input type="time" name="task_starts_at" required="" id="id_task_starts_at">
+                </p>
+                <p>
+                    <label for="id_task_ends_at">Task ends at:</label>
+                    <input type="time" name="task_ends_at" required="" id="id_task_ends_at">
+                </p>
+                <input type="hidden" name="username" value="{{user.username}}" >
+                <input type="submit" value="submit">
+                {% csrf_token %}
+                
+            </form>
+            {%if added%}
+                <h4>{{title}} added successfully...</h4>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}

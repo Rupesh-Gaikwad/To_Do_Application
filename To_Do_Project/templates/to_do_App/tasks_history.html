@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'to_do_App/tasks_template.html' %}
+
+{% block main %}
+<div class="main">
+    <div class="side_panel">
+        <ul>
+            <a href="/ongoing_tasks"><li >Ongoing Tasks</li></a>
+            <a href="/upcoming_tasks"><li >Upcoming Tasks</li></a>
+            <a href="/completed_tasks"><li >Completed Tasks</li></a>
+            <a href="#"><li id ="current">Tasks History</li></a>
+            <a href="/new_task"><li >Add New Task</li></a>
+        </ul>
+    </div>
+    <div class="main_content">
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'to_do_App/skeleton.html' %}
+{% load static %}
+
+{% block title%}
+<link rel="stylesheet" href="{% static 'css/tasks_template.css' %}">
+<title>ToDo</title>
+{% endblock %}
+
+{% block content %}
+<div class="head">
+    <div class="user_name">
+        {% if user.is_authenticated%}
+            <h3>Welcome {{user.username}}. You are successfully logged in !</h3>
+        {%else%}
+            <h3>Sorry you are not logged in!</h3>
+            <h2></h2>
+        {%endif%}
+    </div>
+    <div class="logout_button">
+        <a href="/accounts/logout">Log out</a>
+    </div>
+</div>
+{%block main%}
+{%endblock%}
+
+{% endblock %}

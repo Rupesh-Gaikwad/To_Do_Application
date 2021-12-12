@@ -1,0 +1,112 @@
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.head{
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    
+}
+
+.user_name{
+    width: fit-content;
+    
+}
+
+.user_name h3{
+    background-color: cornflowerblue;
+    padding: 7px 14px;
+    border-top: 2px solid cornflowerblue;
+    color: rgb(255, 255, 255);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.logout_button{
+    background-color: cornflowerblue;
+    padding: 10px 30px;
+    
+}
+
+.logout_button a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.main{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5%;
+}
+
+.main .side_panel{
+    background-color: gray;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px 30px 20px 0px;
+    border-radius: 10px;
+    flex: 3%;
+}
+
+.main .main_content{
+    flex: 45%;
+}
+
+.main_content table, thead, tr, th, td{
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+td,th{
+    padding: 8px 16px;
+}
+
+ul{
+    list-style-type: none;
+    color: wheat;
+    font-size: 20px;
+    align-self: center;
+}
+
+li{
+    padding: 10px 20px ;
+    font-weight: 800;
+    margin: 5px;
+    border: 1px solid gray;
+    border-radius: 7px;
+    text-align: center;
+    
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#current{
+    background-color: rgb(100, 100, 100);
+    border: 1px solid white;
+}
+
+li:hover{
+    background-color: rgb(100, 100, 100);
+    border: 1px solid white;
+}
+
+form{
+    border: 2px solid gray;
+    width: 500px;
+    text-align: left;
+    vertical-align: middle;
+    padding: 20px 40px 60px 40px;
+    border-radius: 20px;
+}

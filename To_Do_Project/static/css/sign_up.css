@@ -1,0 +1,27 @@
+.signup_form{
+    border: 2px solid gray;
+    margin: auto;
+    width: 300px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px 40px 60px 40px;
+    border-radius: 20px;
+}
+
+#home_link{
+    font-size: 20px;
+    font-weight: 800;
+    font-family: monospace;
+}
+
+
+a{
+    text-decoration: none;
+    color: blueviolet;
+    font-weight: 800;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
