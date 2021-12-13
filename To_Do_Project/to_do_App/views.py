@@ -91,3 +91,12 @@ def new_tasks_view(request):
             return render(request, 'to_do_App/new_tasks.html', context={'title': request.POST['title'],'added': True})
     return render(request, 'to_do_App/new_tasks.html', {'added': False})
 
+@login_required
+def delete_task_view(request, id):
+    task = Tasks.objects.get(id=id)
+    task.delete()
+    return ongoing_tasks_view(request)
+
+# @login_required
+# def update_task_view(request, id):
+        

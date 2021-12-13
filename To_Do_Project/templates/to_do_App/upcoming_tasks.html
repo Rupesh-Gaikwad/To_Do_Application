@@ -26,9 +26,9 @@
                     <td>{{task.title}} - {{task.description}}</td>
                     <td>{{task.task_starts_at}}</td>
                     <td>{{task.task_ends_at}}</td>
-                    <td id="update_button">Update</td>
-                    <td id="delete_button">Delete</td>
-                </tr>
+                    <td id="update_button"><a href="/update_task/{{task.id}}">Update</a></td>
+                    <td id="delete_button"><a href="/delete_task/{{task.id}}">Delete</a</td>
+                   </tr>
                 {% endfor %}
             </table>
         {% else %}
