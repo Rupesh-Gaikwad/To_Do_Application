@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from to_do_App.models import Tasks
 from to_do_App.forms import TaskForm
+from datetime import datetime, timezone, date
 
 
 # Create your views here.
@@ -46,21 +47,30 @@ def ongoing_tasks_view(request):
     username = request.user.username
     #print(username)
     try:
-        tasks = Tasks.objects.filter(username=username)
+        tasks = Tasks.objects.filter(username=username, task_starts_at__lte=datetime.now().time(), task_ends_at__gt=datetime.now().time())
     except Tasks.DoesNotExist:
         tasks = None
     return render(request, 'to_do_App/ongoing_tasks.html', {'tasks':tasks})
 
 @login_required
 def upcoming_tasks_view(request):
+    username = request.user.username
     #username = request.session.get('username')
-    return render(request, 'to_do_App/upcoming_tasks.html')
+    try:
+        tasks = Tasks.objects.filter(username=username, task_starts_at__gte=datetime.now().time())
+    except Tasks.DoesNotExist:
+        tasks = None
+    return render(request, 'to_do_App/upcoming_tasks.html', {'tasks': tasks})
 
 @login_required
 def completed_tasks_view(request):
+    username = request.user.username
     #username = request.session.get('username')
-    form = TaskForm()
-    return render(request, 'to_do_App/completed_tasks.html', context={'form':form})
+    try:
+        tasks = Tasks.objects.filter(username=username).filter(task_ends_at__lte=datetime.now().time())
+    except Tasks.DoesNotExist:
+        tasks = None
+    return render(request, 'to_do_App/completed_tasks.html', context={'tasks':tasks})
 
 @login_required
 def tasks_history_view(request):

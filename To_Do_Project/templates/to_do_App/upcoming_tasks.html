@@ -6,13 +6,34 @@
     <div class="side_panel">
         <ul>
             <a href="/ongoing_tasks"><li >Ongoing Tasks</li></a>
-            <a href="#"><li id ="current">Upcoming Tasks</li></a>
+            <a href="/upcoming_tasks"><li id ="current">Upcoming Tasks</li></a>
             <a href="/completed_tasks"><li >Completed Tasks</li></a>
-            <a href="/tasks_history"><li >Tasks History</li></a>
             <a href="/new_task"><li >Add New Task</li></a>
         </ul>
     </div>
     <div class="main_content">
+        {% if tasks %}
+            <h2>Upcoming tasks</h2>
+            
+            <table>
+                <thead>
+                    <th>Task</th>
+                    <th>Begins At</th>
+                    <th>Ends At</th>
+                </thead>
+                {% for task in tasks%}
+                <tr>
+                    <td>{{task.title}} - {{task.description}}</td>
+                    <td>{{task.task_starts_at}}</td>
+                    <td>{{task.task_ends_at}}</td>
+                    <td id="update_button">Update</td>
+                    <td id="delete_button">Delete</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h2>You don't have any upcoming tasks.</h2>
+        {% endif %}
 
     </div>
 </div>

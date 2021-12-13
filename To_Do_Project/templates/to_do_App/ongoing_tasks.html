@@ -5,10 +5,9 @@
 <div class="main">
     <div class="side_panel">
         <ul>
-            <a href="#"><li id ="current">Ongoing Tasks</li></a>
+            <a href="/ongoing_tasks"><li id ="current">Ongoing Tasks</li></a>
             <a href="/upcoming_tasks"><li >Upcoming Tasks</li></a>
             <a href="/completed_tasks"><li >Completed Tasks</li></a>
-            <a href="/tasks_history"><li >Tasks History</li></a>
             <a href="/new_task"><li >Add New Task</li></a>
         </ul>
     </div>
@@ -18,17 +17,17 @@
             
             <table>
                 <thead>
-                    <th>Title</th>
-                    <th>Description</th>
+                    <th>Task</th>
                     <th>Begins At</th>
                     <th>Ends At</th>
                 </thead>
                 {% for task in tasks%}
                 <tr>
-                    <td>{{task.title}}</td>
-                    <td>{{task.description}}</td>
+                    <td>{{task.title}} - {{task.description}}</td>
                     <td>{{task.task_starts_at}}</td>
                     <td>{{task.task_ends_at}}</td>
+                    <td id="delete_button">Delete</td>
+
                 </tr>
                 {% endfor %}
             </table>

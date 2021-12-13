@@ -43,6 +43,7 @@ body{
 .main{
     width: 80%;
     margin: auto;
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
     column-gap: 5%;
@@ -57,18 +58,10 @@ body{
     flex: 3%;
 }
 
-.main .main_content{
+.main_content{
     flex: 45%;
 }
 
-.main_content table, thead, tr, th, td{
-    border-collapse: collapse;
-    border: 2px solid black;
-}
-
-td,th{
-    padding: 8px 16px;
-}
 
 ul{
     list-style-type: none;
@@ -109,4 +102,32 @@ form{
     vertical-align: middle;
     padding: 20px 40px 60px 40px;
     border-radius: 20px;
+}
+
+table th,td{
+    padding: 10px 20px;
+}
+
+thead{
+    background-color: gray;
+}
+
+
+tr:nth-child(even){
+    background-color: rgb(187, 64, 64);
+}
+
+#update_button{
+    background-color: green;
+    border-radius: 15px;
+    padding: 5px 10px;
+
+}
+
+#delete_button{
+    background-color: red;
+    border-radius: 15px;
+    width: 10px;
+    padding: 5px 10px;
+
 }
