@@ -92,11 +92,37 @@ def new_tasks_view(request):
     return render(request, 'to_do_App/new_tasks.html', {'added': False})
 
 @login_required
-def delete_task_view(request, id):
+def ongoing_delete_task_view(request, id):
     task = Tasks.objects.get(id=id)
     task.delete()
     return ongoing_tasks_view(request)
 
-# @login_required
-# def update_task_view(request, id):
+@login_required
+def upcoming_delete_task_view(request, id):
+    task = Tasks.objects.get(id=id)
+    task.delete()
+    return upcoming_tasks_view(request)
+
+@login_required
+def completed_delete_task_view(request, id):
+    task = Tasks.objects.get(id=id)
+    task.delete()
+    return completed_tasks_view(request)
+
+@login_required
+def update_task_view(request, id):
+    if request.method=='GET':
+        task_details = Tasks.objects.get(id=id)
+        start_time = str(task_details.task_starts_at)
+        end_time = str(task_details.task_ends_at)
+        print(task_details.task_starts_at)
+        print(task_details.username)
+        return render(request, 'to_do_App/new_tasks.html', {'added': False, 'update': True, 'old_values': task_details, 'starts_at': start_time, 'ends_at': end_time})
+
+    if request.method=='POST':
+        current_task = Tasks.objects.get(id=id)
+        task_to_update = TaskForm(request.POST, instance=current_task) 
+        if task_to_update.is_valid():
+            task_to_update.save()
+        return redirect('/upcoming_tasks/')
         

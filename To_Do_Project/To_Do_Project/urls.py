@@ -28,7 +28,9 @@ urlpatterns = [
     path('completed_tasks/', views.completed_tasks_view),
     path('tasks_history/', views.tasks_history_view),
     path('new_task/', views.new_tasks_view),
-    re_path(r'^delete_task/(?P<id>\d+)$', views.delete_task_view),
-    #re_path(r'^update_task/(?P<id>\d+)$', views.update_task_view),
+    re_path(r'^delete_task/ongoing/(?P<id>\d+)$', views.ongoing_delete_task_view),
+    re_path(r'^delete_task/upcoming/(?P<id>\d+)$', views.upcoming_delete_task_view),
+    re_path(r'^delete_task/completed/(?P<id>\d+)$', views.completed_delete_task_view),
+    re_path(r'^update_task/(?P<id>\d+)$', views.update_task_view),
 
 ]

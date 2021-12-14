@@ -6,16 +6,39 @@
     <div class="side_panel">
         <ul>
             <a href="/ongoing_tasks"><li >Ongoing Tasks</li></a>
-            <a href="/upcoming_tasks"><li >Upcoming Tasks</li></a>
+            {% if update%}
+            <a href="/upcoming_tasks"><li id ="current">Upcoming Tasks</li></a>
+            <a href="/completed_tasks"><li >Completed Tasks</li></a>
+            <a href="/new_task"><li>Add New Task</li></a>
+            {% else %}
+            <a href="/upcoming_tasks"><li>Upcoming Tasks</li></a>
             <a href="/completed_tasks"><li >Completed Tasks</li></a>
             <a href="/new_task"><li id ="current">Add New Task</li></a>
+            {% endif %}
         </ul>
     </div>
     <div class="main_content">
-        <h2>Add New tasks Below</h2>
-        <form method="POST">
+        {% if update%}
+            <h2>Update Task</h2>
+        {% else %}
+            <h2>Add New tasks Below</h2>
+        {% endif %}
             
             <form method="POST">
+                {% if update %}
+                <p> <input type="text" name="title" placeholder="Task Title" maxlength="60" required="" id="id_title" value="{{old_values.title}}"></p>
+                <p> <textarea name="description" cols="40" rows="5" maxlength="500" required="" id="id_description" >{{old_values.description}}</textarea> </p>
+                <p>
+                    <label for="id_task_starts_at">Task starts at:</label>
+                    <input type="time" name="task_starts_at" required="" id="id_task_starts_at" value="{{starts_at}}" >
+                </p>
+                <p>
+                    <label for="id_task_ends_at">Task ends at:</label>
+                    <input type="time" name="task_ends_at" required="" id="id_task_ends_at" value="{{ends_at}}" >
+                </p>
+                <input type="hidden" name="username" value="{{user.username}}" >
+                <input type="submit" value="Update">
+                {% else %}
                 <p> <input type="text" name="title" placeholder="Task Title" maxlength="60" required="" id="id_title"></p>
                 <p> <textarea name="description" cols="40" rows="5" placeholder="Task Description" maxlength="500" required="" id="id_description"></textarea></p>
                 <p>
@@ -28,6 +51,7 @@
                 </p>
                 <input type="hidden" name="username" value="{{user.username}}" >
                 <input type="submit" value="submit">
+                {% endif %}
                 {% csrf_token %}
                 
             </form>
