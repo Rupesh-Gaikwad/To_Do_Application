@@ -36,7 +36,6 @@
                     <label for="id_task_ends_at">Task ends at:</label>
                     <input type="time" name="task_ends_at" required="" id="id_task_ends_at" value="{{ends_at}}" >
                 </p>
-                <input type="hidden" name="username" value="{{user.username}}" >
                 <input type="submit" value="Update">
                 {% else %}
                 <p> <input type="text" name="title" placeholder="Task Title" maxlength="60" required="" id="id_title"></p>
@@ -49,7 +48,6 @@
                     <label for="id_task_ends_at">Task ends at:</label>
                     <input type="time" name="task_ends_at" required="" id="id_task_ends_at">
                 </p>
-                <input type="hidden" name="username" value="{{user.username}}" >
                 <input type="submit" value="submit">
                 {% endif %}
                 {% csrf_token %}

@@ -5,14 +5,13 @@ body{
 
 
 .nav_bar {
-    background-color: rgb(129, 28, 129);
+    background-color: rgb(40, 138, 184);
     margin-top: 0px;
     padding: 10px 0px;
     text-align: center;
     color: wheat;
     height: 50px;
-    border-bottom: 5px solid rgb(90, 10, 90);
-    border-top: 5px solid rgb(90, 10, 90);
+    border-top: 5px solid rgb(0, 0, 0);
 
     display: flex;
     align-items: center;

@@ -50,7 +50,7 @@ body{
 }
 
 .main .side_panel{
-    background-color: gray;
+    background-color: cornflowerblue;
     width: fit-content;
     height: fit-content;
     padding: 20px 30px 20px 0px;
@@ -74,7 +74,7 @@ li{
     padding: 10px 20px ;
     font-weight: 800;
     margin: 5px;
-    border: 1px solid gray;
+    border: 1px solid white;
     border-radius: 7px;
     text-align: center;
     
@@ -86,13 +86,13 @@ a{
 }
 
 #current{
-    background-color: rgb(100, 100, 100);
-    border: 1px solid white;
+    background-color: rgb(208, 99, 223);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 li:hover{
-    background-color: rgb(100, 100, 100);
-    border: 1px solid white;
+    background-color: rgb(208, 99, 223);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 form{

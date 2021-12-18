@@ -44,30 +44,31 @@ def sign_up_view(request):
 
 @login_required
 def ongoing_tasks_view(request):
-    username = request.user.username
+    user = request.user
     #print(username)
     try:
-        tasks = Tasks.objects.filter(username=username, task_starts_at__lte=datetime.now().time(), task_ends_at__gt=datetime.now().time())
+        tasks = Tasks.objects.filter(username=user, task_starts_at__lte=datetime.now().time(), task_ends_at__gt=datetime.now().time())
     except Tasks.DoesNotExist:
         tasks = None
     return render(request, 'to_do_App/ongoing_tasks.html', {'tasks':tasks})
 
+
 @login_required
 def upcoming_tasks_view(request):
-    username = request.user.username
+    user = request.user
     #username = request.session.get('username')
     try:
-        tasks = Tasks.objects.filter(username=username, task_starts_at__gte=datetime.now().time())
+        tasks = Tasks.objects.filter(username=user, task_starts_at__gte=datetime.now().time())
     except Tasks.DoesNotExist:
         tasks = None
     return render(request, 'to_do_App/upcoming_tasks.html', {'tasks': tasks})
 
 @login_required
 def completed_tasks_view(request):
-    username = request.user.username
+    user = request.user
     #username = request.session.get('username')
     try:
-        tasks = Tasks.objects.filter(username=username).filter(task_ends_at__lte=datetime.now().time())
+        tasks = Tasks.objects.filter(username=user).filter(task_ends_at__lte=datetime.now().time())
     except Tasks.DoesNotExist:
         tasks = None
     return render(request, 'to_do_App/completed_tasks.html', context={'tasks':tasks})
@@ -80,15 +81,21 @@ def tasks_history_view(request):
 
 @login_required
 def new_tasks_view(request):
-    #username = request.session.get('username')
+    user = request.user
     if request.method=='POST':
+        print('I am in POST method')
         form = TaskForm(request.POST)
         if form.is_valid():
             #form.save(commit=False)
             #form.username = request.user.username
             #print(request.user.username)
-            form.save(commit=True)
+            partial_task = form.save(commit=False)
+            partial_task.username = user
+            full_task = partial_task
+            full_task.save()
             return render(request, 'to_do_App/new_tasks.html', context={'title': request.POST['title'],'added': True})
+        else:
+            return render(request, 'to_do_App/new_tasks.html', context={'title': 'Sorry form not submitted..','added': True})
     return render(request, 'to_do_App/new_tasks.html', {'added': False})
 
 @login_required
@@ -123,6 +130,8 @@ def update_task_view(request, id):
         current_task = Tasks.objects.get(id=id)
         task_to_update = TaskForm(request.POST, instance=current_task) 
         if task_to_update.is_valid():
+            task_to_update.save(commit=False)
+            task_to_update.username = request.user
             task_to_update.save()
         return redirect('/upcoming_tasks/')
         
