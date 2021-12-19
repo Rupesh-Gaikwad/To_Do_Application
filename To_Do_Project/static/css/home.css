@@ -39,3 +39,7 @@
     border: 1px solid rgb(129, 28, 129);
     background-color: white;
 }
+
+#make-center{
+    text-align: center;
+}

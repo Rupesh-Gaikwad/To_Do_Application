@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +30,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 SECRET_KEY = 'django-insecure-*kts&6je*ogb90%yn90))x)7%3%t8)#m#-e1bis2sxu!(cfx!('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'To_Do_Project.urls'
@@ -81,10 +84,8 @@ WSGI_APPLICATION = 'To_Do_Project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'To_Do_Project',
-        'USER': 'root',
-        'PASSWORD': 'Rupesh@123',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ciba',
     }
 }
 
@@ -135,6 +136,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [STATIC_DIR,]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
@@ -146,3 +148,6 @@ LOGOUT_REDIRECT_URL='/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
